@@ -1,0 +1,29 @@
+<%= form_for(@members_project) do |f| %>
+  <% if @members_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@members_project.errors.count, "error") %> prohibited this members_project from being saved:</h2>
+
+      <ul>
+      <% @members_project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :member_id %><br>
+    <%= collection_select(:members_project, :member_id, Member.all, :id, :first_and_lastname, prompt: "Choose a Member", :multiple => false) %> 
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= collection_select(:members_project, :project_id, Project.all, :id, :project_book_name, prompt: "Choose a Project", :multiple => false) %> 
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create a member project completion"%>
+  </div>
+<% end %>

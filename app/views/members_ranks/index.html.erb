@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Members Ranks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Ranks</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members_ranks.each do |members_rank| %>
+      <tr>
+        <td><%= members_rank.member %></td>
+        <td><%= members_rank.ranks %></td>
+        <td><%= members_rank.date %></td>
+        <td><%= link_to 'Show', members_rank %></td>
+        <td><%= link_to 'Edit', edit_members_rank_path(members_rank) %></td>
+        <td><%= link_to 'Destroy', members_rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Members rank', new_members_rank_path %>
